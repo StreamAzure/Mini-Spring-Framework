@@ -1,20 +1,24 @@
 package com.stream.test;
 
-import com.stream.minispring.BeanDefinition;
-import com.stream.minispring.BeanFactory;
+import com.stream.minispring.beans.BeanDefinition;
+import com.stream.minispring.beans.factory.AutowireCapableBeanFactory;
+import com.stream.minispring.beans.factory.BeanFactory;
 import org.junit.jupiter.api.Test;
 
 public class testBeanFactory {
     @Test
-    public void test_BeanFactory(){
-        BeanFactory beanFactory = new BeanFactory();
+    public void test() {
+        // 1.初始化beanfactory
+        BeanFactory beanFactory = new AutowireCapableBeanFactory();
 
-        // 注册 Bean
-        BeanDefinition beanDefinition = new BeanDefinition(new UserService());
-        beanFactory.registerBeanDefinition("userService", beanDefinition);
+        // 2.注入bean
+        BeanDefinition beanDefinition = new BeanDefinition();
+        beanDefinition.setBeanClassName("com.stream.test.UserService"); // 获取类对象
+        beanFactory.registerBeanDefinition("UserService", beanDefinition);
 
-        // 获取 Bean
-        UserService userService = (UserService) beanFactory.getBean("userService");
+        // 3.获取bean
+        UserService userService = (UserService) beanFactory.getBean("UserService");
         userService.queryUserInfo();
+
     }
 }
