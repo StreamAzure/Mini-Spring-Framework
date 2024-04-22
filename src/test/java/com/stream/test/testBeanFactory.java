@@ -3,6 +3,7 @@ package com.stream.test;
 import com.stream.minispring.beans.BeanDefinition;
 import com.stream.minispring.beans.PropertyValue;
 import com.stream.minispring.beans.PropertyValues;
+import com.stream.minispring.beans.factory.AbstractBeanFactory;
 import com.stream.minispring.beans.factory.AutowireCapableBeanFactory;
 import com.stream.minispring.beans.factory.BeanFactory;
 import com.stream.minispring.beans.io.DefaultResourceLoader;
@@ -49,5 +50,25 @@ public class testBeanFactory {
         // 获取bean
         UserService userService = (UserService) beanFactory.getBean("UserService");
         userService.queryUserInfo();
+    }
+
+    @Test
+    public void testXMLwithBean() throws Exception {
+        // 读取XML配置
+        XMLBeanDefinitionReader xmlBeanDefinitionReader = new XMLBeanDefinitionReader(new DefaultResourceLoader());
+        xmlBeanDefinitionReader.loadBeanDefinitions("src/test/resources/test.xml");
+
+        // 初始化BeanFactory并注册Bean
+        AbstractBeanFactory beanFactory = new AutowireCapableBeanFactory();
+        for(Map.Entry<String, BeanDefinition> beanDefinitionEntry : xmlBeanDefinitionReader.getRegistry().entrySet()){
+            beanFactory.registerBeanDefinition(beanDefinitionEntry.getKey(), beanDefinitionEntry.getValue());
+        }
+        // 实例化Bean
+        beanFactory.preInstantiateSingletons();
+
+        // 获取bean
+        // 其内部的 userService 属性会被自动注入
+        OutputService outputService = (OutputService) beanFactory.getBean("OutputService");
+        outputService.output();
     }
 }

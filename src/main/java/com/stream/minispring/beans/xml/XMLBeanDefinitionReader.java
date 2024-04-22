@@ -2,6 +2,7 @@ package com.stream.minispring.beans.xml;
 
 import com.stream.minispring.beans.AbstractBeanDefinitionReader;
 import com.stream.minispring.beans.BeanDefinition;
+import com.stream.minispring.beans.BeanReference;
 import com.stream.minispring.beans.PropertyValue;
 import com.stream.minispring.beans.io.DefaultResourceLoader;
 
@@ -97,7 +98,19 @@ public class XMLBeanDefinitionReader extends AbstractBeanDefinitionReader {
                 Element propertyEle = (Element) node;
                 String name = propertyEle.getAttribute("name");
                 String value = propertyEle.getAttribute("value");
-                beanDefinition.getPropertyValues().addPropertyValue(new PropertyValue(name,value));
+                if(value != null && value.length() > 0){
+                    // 如果有 value 这个 tag
+                    beanDefinition.getPropertyValues().addPropertyValue(new PropertyValue(name, value));
+                }else{
+                    // 没有 value 就视作 ref 这个 tag
+                    String ref = propertyEle.getAttribute("ref");
+                    if(ref == null || ref.length() == 0){
+                        throw new IllegalArgumentException("Configuration Problem: <property> element wrong");
+                    }
+                    // 用bean的name初始化一个beanReference，再将它作为property的value
+                    BeanReference beanReference = new BeanReference(ref);
+                    beanDefinition.getPropertyValues().addPropertyValue(new PropertyValue(name, beanReference));
+                }
             }
         }
     }

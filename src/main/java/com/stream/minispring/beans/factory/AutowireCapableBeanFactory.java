@@ -1,6 +1,7 @@
 package com.stream.minispring.beans.factory;
 
 import com.stream.minispring.beans.BeanDefinition;
+import com.stream.minispring.beans.BeanReference;
 import com.stream.minispring.beans.PropertyValue;
 
 import java.lang.reflect.Field;
@@ -28,7 +29,14 @@ public class AutowireCapableBeanFactory extends AbstractBeanFactory {
         for(PropertyValue propertyValue: beanDefinition.getPropertyValues().getPropertyValues()){
             Field declaredFiled = bean.getClass().getDeclaredField(propertyValue.getName());
             declaredFiled.setAccessible(true);
-            declaredFiled.set(bean, propertyValue.getValue());
+            Object value = propertyValue.getValue();
+            if (value instanceof BeanReference){
+                // 如果注入的属性是另一个 Bean
+                BeanReference beanReference = (BeanReference) value;
+                // 拿到它的name, 再调用 getBean 拿它的实例
+                value = getBean(beanReference.getName());
+            }
+            declaredFiled.set(bean, value);
         }
     }
 }
