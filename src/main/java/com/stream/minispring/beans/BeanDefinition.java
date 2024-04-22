@@ -1,11 +1,14 @@
 package com.stream.minispring.beans;
 
+import java.util.List;
+
 public class BeanDefinition {
     private Object bean;
 
     private Class beanClass;
 
     private String beanClassName;
+    private PropertyValues propertyValues = new PropertyValues();
 
     public BeanDefinition() {
     }
@@ -39,4 +42,11 @@ public class BeanDefinition {
         return bean;
     }
 
+    public PropertyValues getPropertyValues(){
+        return this.propertyValues;
+    }
+
+    public void setPropertyValues(PropertyValues propertyValues){
+        this.propertyValues = propertyValues;
+    }
 }
