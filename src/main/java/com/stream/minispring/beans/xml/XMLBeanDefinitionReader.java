@@ -3,7 +3,7 @@ package com.stream.minispring.beans.xml;
 import com.stream.minispring.beans.AbstractBeanDefinitionReader;
 import com.stream.minispring.beans.BeanDefinition;
 import com.stream.minispring.beans.PropertyValue;
-import com.stream.minispring.beans.io.ResourceLoader;
+import com.stream.minispring.beans.io.DefaultResourceLoader;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -18,8 +18,8 @@ import java.io.InputStreamReader;
 
 public class XMLBeanDefinitionReader extends AbstractBeanDefinitionReader {
 
-    public XMLBeanDefinitionReader(ResourceLoader resourceLoader){
-        super(resourceLoader);
+    public XMLBeanDefinitionReader(DefaultResourceLoader defaultResourceLoader){
+        super(defaultResourceLoader);
     }
 
     @Override

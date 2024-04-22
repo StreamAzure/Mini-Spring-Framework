@@ -5,7 +5,7 @@ import com.stream.minispring.beans.PropertyValue;
 import com.stream.minispring.beans.PropertyValues;
 import com.stream.minispring.beans.factory.AutowireCapableBeanFactory;
 import com.stream.minispring.beans.factory.BeanFactory;
-import com.stream.minispring.beans.io.ResourceLoader;
+import com.stream.minispring.beans.io.DefaultResourceLoader;
 import com.stream.minispring.beans.xml.XMLBeanDefinitionReader;
 import org.junit.jupiter.api.Test;
 
@@ -37,8 +37,8 @@ public class testBeanFactory {
     @Test
     public void testXML() throws Exception{
         // 读取XML配置
-        XMLBeanDefinitionReader xmlBeanDefinitionReader = new XMLBeanDefinitionReader(new ResourceLoader());
-        xmlBeanDefinitionReader.loadBeanDefinitions("test.xml");
+        XMLBeanDefinitionReader xmlBeanDefinitionReader = new XMLBeanDefinitionReader(new DefaultResourceLoader());
+        xmlBeanDefinitionReader.loadBeanDefinitions("src/test/resources/test.xml");
 
         // 初始化BeanFactory并注册Bean
         BeanFactory beanFactory = new AutowireCapableBeanFactory();

@@ -18,9 +18,9 @@ public abstract class AbstractBeanDefinitionReader implements BeanDefinitionRead
         this.resourceLoader = resourceLoader;
     }
     public Map<String, BeanDefinition> getRegistry(){
-        return registry;
+        return this.registry;
     }
     public ResourceLoader getResourceLoader(){
-        return resourceLoader;
+        return this.resourceLoader;
     }
 }
