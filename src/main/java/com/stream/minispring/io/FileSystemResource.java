@@ -1,4 +1,4 @@
-package com.stream.minispring.beans.io;
+package com.stream.minispring.io;
 
 import java.io.File;
 import java.io.FileInputStream;

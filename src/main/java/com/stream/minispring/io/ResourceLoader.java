@@ -1,4 +1,4 @@
-package com.stream.minispring.beans.io;
+package com.stream.minispring.io;
 
 public interface ResourceLoader {
     String CLASSPATH_URL_PREFIX = "classpath:";

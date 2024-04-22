@@ -1,4 +1,4 @@
-package com.stream.minispring.beans.io;
+package com.stream.minispring.io;
 
 import java.net.MalformedURLException;
 import java.net.URL;

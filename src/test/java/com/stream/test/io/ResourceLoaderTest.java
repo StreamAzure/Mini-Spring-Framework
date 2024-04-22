@@ -1,7 +1,7 @@
 package com.stream.test.io;
 
-import com.stream.minispring.beans.io.Resource;
-import com.stream.minispring.beans.io.DefaultResourceLoader;
+import com.stream.minispring.io.Resource;
+import com.stream.minispring.io.DefaultResourceLoader;
 import org.junit.jupiter.api.Test;
 
 import org.junit.Assert;

@@ -6,7 +6,7 @@ import com.stream.minispring.beans.PropertyValues;
 import com.stream.minispring.beans.factory.AbstractBeanFactory;
 import com.stream.minispring.beans.factory.AutowireCapableBeanFactory;
 import com.stream.minispring.beans.factory.BeanFactory;
-import com.stream.minispring.beans.io.DefaultResourceLoader;
+import com.stream.minispring.io.DefaultResourceLoader;
 import com.stream.minispring.beans.xml.XMLBeanDefinitionReader;
 import org.junit.jupiter.api.Test;
 

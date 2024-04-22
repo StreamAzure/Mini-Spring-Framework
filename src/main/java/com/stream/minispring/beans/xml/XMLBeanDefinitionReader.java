@@ -4,7 +4,7 @@ import com.stream.minispring.beans.AbstractBeanDefinitionReader;
 import com.stream.minispring.beans.BeanDefinition;
 import com.stream.minispring.beans.BeanReference;
 import com.stream.minispring.beans.PropertyValue;
-import com.stream.minispring.beans.io.DefaultResourceLoader;
+import com.stream.minispring.io.DefaultResourceLoader;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

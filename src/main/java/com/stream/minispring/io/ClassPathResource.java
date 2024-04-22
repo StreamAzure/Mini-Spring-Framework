@@ -1,4 +1,4 @@
-package com.stream.minispring.beans.io;
+package com.stream.minispring.io;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
