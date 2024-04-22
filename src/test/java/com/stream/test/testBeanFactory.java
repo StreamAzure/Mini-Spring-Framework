@@ -6,6 +6,8 @@ import com.stream.minispring.beans.PropertyValues;
 import com.stream.minispring.beans.factory.AbstractBeanFactory;
 import com.stream.minispring.beans.factory.AutowireCapableBeanFactory;
 import com.stream.minispring.beans.factory.BeanFactory;
+import com.stream.minispring.context.ApplicationContext;
+import com.stream.minispring.context.ClassPathXmlApplicationContext;
 import com.stream.minispring.io.DefaultResourceLoader;
 import com.stream.minispring.beans.xml.XMLBeanDefinitionReader;
 import org.junit.jupiter.api.Test;
@@ -69,6 +71,13 @@ public class testBeanFactory {
         // 获取bean
         // 其内部的 userService 属性会被自动注入
         OutputService outputService = (OutputService) beanFactory.getBean("OutputService");
+        outputService.output();
+    }
+
+    @Test
+    public void testContext() throws Exception{
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("src/test/resources/test.xml");
+        OutputService outputService = (OutputService) applicationContext.getBean("OutputService");
         outputService.output();
     }
 }
