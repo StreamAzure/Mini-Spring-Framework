@@ -6,9 +6,9 @@ import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Method;
 
 public class ReflectiveMethodInvocation implements MethodInvocation {
-    private Object target;
-    private Method method;
-    private Object[] args;
+    protected Object target;
+    protected Method method;
+    protected Object[] args;
     public ReflectiveMethodInvocation(Object target, Method method, Object[] args){
         this.target = target;
         this.method = method;

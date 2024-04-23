@@ -4,16 +4,14 @@ package com.stream.minispring.aop;
  * 被代理的对象
  */
 public class TargetSource {
-    private Class targetClass;
     private Object target;
-    public TargetSource(Object target, Class<?> targetClass){
+    public TargetSource(Object target){
         this.target = target;
-        this.targetClass = targetClass;
-    }
-    public Class getTargetClass() {
-        return targetClass;
     }
     public Object getTarget() {
         return target;
+    }
+    public Class<?>[] getTargetClass(){
+        return this.target.getClass().getInterfaces();
     }
 }
