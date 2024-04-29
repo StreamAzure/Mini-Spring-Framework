@@ -8,6 +8,10 @@ import com.stream.minispring.beans.factory.config.BeanDefinition;
 import java.lang.reflect.Field;
 
 public abstract class AbstractAutowireCapableBeanFactory extends  AbstractBeanFactory{
+
+    // Bean实例化策略，默认使用 SimpleInstantiationStrategy
+    private InstantiationStrategy instantiationStrategy = new SimpleInstantiationStrategy();
+
     @Override
     protected Object createBean(String beanName, BeanDefinition beanDefinition) throws Exception {
         return doCreateBean(beanName, beanDefinition);
@@ -23,7 +27,8 @@ public abstract class AbstractAutowireCapableBeanFactory extends  AbstractBeanFa
         Class beanClass = beanDefinition.getBeanClass();
         Object bean = null;
         try {
-            bean = beanClass.newInstance(); // 反射机制创建实例
+            // 灵活采用不同的实例化策略执行bean的实例化
+            bean = createBeanInstance(beanDefinition);
             // 填充属性
             applyPropertyValues(bean, beanDefinition);
         }catch (Exception e){
@@ -50,5 +55,17 @@ public abstract class AbstractAutowireCapableBeanFactory extends  AbstractBeanFa
             }
             BeanUtil.setFieldValue(bean, name, value);
         }
+    }
+
+    protected Object createBeanInstance(BeanDefinition beanDefinition) throws Exception {
+        return getInstantiationStrategy().instantiate(beanDefinition);
+    }
+
+    public InstantiationStrategy getInstantiationStrategy(){
+        return instantiationStrategy;
+    }
+
+    public void setInstantiationStrategy(InstantiationStrategy instantiationStrategy){
+        this.instantiationStrategy = instantiationStrategy;
     }
 }
