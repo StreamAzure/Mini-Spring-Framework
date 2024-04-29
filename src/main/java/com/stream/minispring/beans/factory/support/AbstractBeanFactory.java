@@ -10,8 +10,9 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
+ * 抽象类工厂
  * 继承 DefaultSingletonBeanRegistry，Map、Bean实例的添加和获取
- * 实现 BeanFactory 接口，具体逻辑为：
+ * 实现 BeanFactory 接口，具有获取 Bean 的能力，具体逻辑为：
  * 1. 先尝试直接直接调用父类getSingleton方法获取 Bean 实例，
  * 2. 若无对应Bean实例，获取BeanDefinition，再根据该BeanDefinition当场创建Bean实例
  */

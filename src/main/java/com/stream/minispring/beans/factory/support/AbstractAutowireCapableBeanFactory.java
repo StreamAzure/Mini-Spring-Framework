@@ -8,6 +8,10 @@ import com.stream.minispring.beans.factory.config.BeanDefinition;
 
 import java.lang.reflect.Field;
 
+/**
+ * 抽象类工厂
+ * 继承了 AbstractBeanFactory，实例化Bean和依赖注入
+ */
 public abstract class AbstractAutowireCapableBeanFactory extends  AbstractBeanFactory implements AutowireCapableBeanFactory {
 
     // Bean实例化策略，默认使用 SimpleInstantiationStrategy

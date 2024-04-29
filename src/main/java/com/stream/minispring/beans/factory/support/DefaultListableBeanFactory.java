@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * 实例工厂
  * Map: 维护 name 到 BeanDefinition 对象的映射
  * 1. 获取BeanDefinition的具体逻辑
  * 2. 注册BeanDefinition的具体逻辑

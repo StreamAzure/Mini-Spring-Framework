@@ -2,6 +2,9 @@ package com.stream.minispring.beans.factory;
 
 import java.util.Map;
 
+/**
+ * 批量获取Bean的工厂，可以列出工厂可以生产的所有Bean实例
+ */
 public interface ListableBeanFactory extends BeanFactory {
 
     /**

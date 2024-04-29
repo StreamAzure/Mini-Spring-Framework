@@ -9,6 +9,9 @@ import com.stream.minispring.io.ResourceLoader;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 从资源中读取BeanDefinition，并向容器中注册BeanDefinition
+ */
 public abstract class AbstractBeanDefinitionReader implements BeanDefinitionReader {
     private final BeanDefinitionRegistry registry;
     private ResourceLoader resourceLoader;

@@ -2,6 +2,9 @@ package com.stream.minispring.beans.factory;
 
 import com.stream.minispring.beans.factory.config.BeanDefinition;
 
+/**
+ * 工厂模式的工厂接口，IOC始祖
+ */
 public interface BeanFactory {
     /**
      * 根据名称获取Bean
@@ -18,7 +21,7 @@ public interface BeanFactory {
      * @param requiredType
      * @param <T>
      * @return
-     * @throws BeansException
+     * @throws Exception
      */
     <T> T getBean(String name, Class<T> requiredType) throws Exception;
 }
