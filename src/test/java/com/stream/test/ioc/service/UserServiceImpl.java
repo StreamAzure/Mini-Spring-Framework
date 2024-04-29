@@ -1,4 +1,4 @@
-package com.stream.test;
+package com.stream.test.ioc.service;
 
 public class UserServiceImpl implements UserService{
     private String text;

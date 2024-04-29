@@ -1,13 +1,14 @@
 package com.stream.minispring.beans.factory.support;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.stream.minispring.beans.factory.config.AutowireCapableBeanFactory;
 import com.stream.minispring.beans.factory.config.BeanReference;
 import com.stream.minispring.beans.PropertyValue;
 import com.stream.minispring.beans.factory.config.BeanDefinition;
 
 import java.lang.reflect.Field;
 
-public abstract class AbstractAutowireCapableBeanFactory extends  AbstractBeanFactory{
+public abstract class AbstractAutowireCapableBeanFactory extends  AbstractBeanFactory implements AutowireCapableBeanFactory {
 
     // Bean实例化策略，默认使用 SimpleInstantiationStrategy
     private InstantiationStrategy instantiationStrategy = new SimpleInstantiationStrategy();

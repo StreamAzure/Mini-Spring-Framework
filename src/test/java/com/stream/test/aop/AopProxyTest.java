@@ -1,12 +1,5 @@
 package com.stream.test.aop;
 
-import com.stream.minispring.aop.AdvisedSupport;
-import com.stream.minispring.aop.Cglib2AopProxy;
-import com.stream.minispring.aop.JdkDynamicAopProxy;
-import com.stream.minispring.aop.TargetSource;
-import com.stream.test.UserService;
-import org.junit.jupiter.api.Test;
-
 //public class AopProxyTest {
 //    @Test
 //    public void testInterceptor() throws Exception{

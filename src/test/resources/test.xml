@@ -4,10 +4,10 @@
        xsi:schemaLocation="
 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-    <bean name="OutputService" class="com.stream.test.OutputService">
+    <bean name="OutputService" class="com.stream.test.ioc.service.OutputService">
         <property name="userService" ref="UserService"></property>
     </bean>
-    <bean name="UserService" class="com.stream.test.UserServiceImpl">
+    <bean name="UserService" class="com.stream.test.ioc.service.UserServiceImpl">
         <property name="text" value="Hello World from XML!"></property>
     </bean>
 
