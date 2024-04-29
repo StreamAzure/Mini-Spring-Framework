@@ -1,5 +1,6 @@
 package com.stream.minispring.beans;
 
+import com.stream.minispring.beans.factory.config.BeanDefinition;
 import com.stream.minispring.io.ResourceLoader;
 
 import java.util.HashMap;

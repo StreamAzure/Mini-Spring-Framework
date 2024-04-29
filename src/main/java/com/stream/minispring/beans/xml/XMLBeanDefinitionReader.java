@@ -1,8 +1,8 @@
 package com.stream.minispring.beans.xml;
 
 import com.stream.minispring.beans.AbstractBeanDefinitionReader;
-import com.stream.minispring.beans.BeanDefinition;
-import com.stream.minispring.beans.BeanReference;
+import com.stream.minispring.beans.factory.config.BeanDefinition;
+import com.stream.minispring.beans.factory.config.BeanReference;
 import com.stream.minispring.beans.PropertyValue;
 import com.stream.minispring.io.DefaultResourceLoader;
 
@@ -56,7 +56,7 @@ public class XMLBeanDefinitionReader extends AbstractBeanDefinitionReader {
         inputStream.close();
     }
 
-    public void registerBeanDefinitions(Document doc){
+    public void registerBeanDefinitions(Document doc) throws ClassNotFoundException {
         Element root = doc.getDocumentElement();
         parseBeanDefinitions(root);
     }
@@ -65,7 +65,7 @@ public class XMLBeanDefinitionReader extends AbstractBeanDefinitionReader {
      * 解析XML文件：Bean定义
      * @param root
      */
-    protected void parseBeanDefinitions(Element root){
+    protected void parseBeanDefinitions(Element root) throws ClassNotFoundException {
         NodeList nl = root.getChildNodes();
         for (int i = 0; i < nl.getLength(); i++) {
             Node node = nl.item(i);
@@ -76,12 +76,12 @@ public class XMLBeanDefinitionReader extends AbstractBeanDefinitionReader {
         }
     }
 
-    protected void processBeanDefinition(Element ele) {
+    protected void processBeanDefinition(Element ele) throws ClassNotFoundException {
         String name = ele.getAttribute("name");
         String className = ele.getAttribute("class");
-        BeanDefinition beanDefinition = new BeanDefinition();
+        Class<?> cls = Class.forName(className);
+        BeanDefinition beanDefinition = new BeanDefinition(cls);
         processProperty(ele,beanDefinition);
-        beanDefinition.setBeanClassName(className);
         getRegistry().put(name, beanDefinition);
     }
 
